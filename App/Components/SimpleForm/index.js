@@ -20,9 +20,15 @@ const validate = values => {
   return error;
 };
 
+const submit = (values) => {
+  console.log(values);
+}
+
 class SimpleForm extends Component {
+
   render() {
     const { handleSubmit, pristine, reset } = this.props;
+
     return (
       <Container>
         <Content
@@ -57,7 +63,7 @@ class SimpleForm extends Component {
             primary
             block
             disabled={pristine}
-            onPress={reset}
+            onPress={handleSubmit(submit)}
             style={{ marginTop: 10, marginBottom: 15 }}
           >
             <Text> SAVE </Text>
