@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { reduxForm } from 'redux-form';
+import InputField from '../FormFields/Input'
 import {
   Input,
   Container,
@@ -9,8 +11,18 @@ import {
   Text,
 } from "native-base";
 
+const validate = values => {
+  const error = {};
+  error.name = ''
+  if(!values.name){
+    error.name = 'required';
+  }
+  return error;
+};
+
 class SimpleForm extends Component {
   render() {
+    const { handleSubmit, pristine, reset } = this.props;
     return (
       <Container>
         <Content
@@ -22,6 +34,10 @@ class SimpleForm extends Component {
             ADD NEW ADDRESS{" "}
           </Text>
           <Card style={{ paddingHorizontal: 10 }}>
+            <InputField
+              name="name"
+              placeholder="Name"
+            />
             <Item underline>
               <Input style={{ paddingLeft: 0 }} placeholder="Pin Code" />
             </Item>
@@ -49,6 +65,8 @@ class SimpleForm extends Component {
           <Button
             primary
             block
+            disabled={pristine}
+            onPress={reset}
             style={{ marginTop: 10, marginBottom: 15 }}
           >
             <Text> SAVE </Text>
@@ -58,4 +76,7 @@ class SimpleForm extends Component {
     );
   }
 }
-export default SimpleForm;
+export default reduxForm({
+  form: 'test',
+  validate
+})(SimpleForm);
