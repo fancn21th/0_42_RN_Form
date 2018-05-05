@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { reduxForm } from 'redux-form';
-import InputField from '../FormFields/Input'
 import {
   Input,
   Container,
@@ -11,18 +9,8 @@ import {
   Text,
 } from "native-base";
 
-const validate = values => {
-  const error = {};
-  error.name = ''
-  if(!values.name){
-    error.name = 'required';
-  }
-  return error;
-};
-
 class SimpleForm extends Component {
   render() {
-    const { handleSubmit, pristine, reset } = this.props;
     return (
       <Container>
         <Content
@@ -34,30 +22,33 @@ class SimpleForm extends Component {
             ADD NEW ADDRESS{" "}
           </Text>
           <Card style={{ paddingHorizontal: 10 }}>
-            <InputField
-              name="name"
-              placeholder="Name"
-            />
-            <InputField
-              name="hobby"
-              placeholder="Hobby"
-            />
+            <Item underline>
+              <Input style={{ paddingLeft: 0 }} placeholder="Pin Code" />
+            </Item>
+            <Item underline>
+              <Input style={{ paddingLeft: 0 }} placeholder="Locality" />
+            </Item>
+            <Item underline>
+              <Input style={{ paddingLeft: 0 }} placeholder="City" />
+            </Item>
+            <Item underline style={{ borderBottomWidth: 0 }}>
+              <Input style={{ paddingLeft: 0 }} placeholder="State" />
+            </Item>
           </Card>
           <Card style={{ paddingHorizontal: 10 }}>
-            <InputField
-              name="address"
-              placeholder="Address"
-            />
-            <InputField
-              name="phone"
-              placeholder="Phone"
-            />
+            <Item underline>
+              <Input style={{ paddingLeft: 0 }} placeholder="Name" />
+            </Item>
+            <Item underline>
+              <Input style={{ paddingLeft: 0 }} placeholder="Address" />
+            </Item>
+            <Item underline>
+              <Input style={{ paddingLeft: 0 }} placeholder="Mobile No." />
+            </Item>
           </Card>
           <Button
             primary
             block
-            disabled={pristine}
-            onPress={reset}
             style={{ marginTop: 10, marginBottom: 15 }}
           >
             <Text> SAVE </Text>
@@ -67,7 +58,4 @@ class SimpleForm extends Component {
     );
   }
 }
-export default reduxForm({
-  form: 'test',
-  validate
-})(SimpleForm);
+export default SimpleForm;
