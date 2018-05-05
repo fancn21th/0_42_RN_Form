@@ -38,29 +38,20 @@ class SimpleForm extends Component {
               name="name"
               placeholder="Name"
             />
-            <Item underline>
-              <Input style={{ paddingLeft: 0 }} placeholder="Pin Code" />
-            </Item>
-            <Item underline>
-              <Input style={{ paddingLeft: 0 }} placeholder="Locality" />
-            </Item>
-            <Item underline>
-              <Input style={{ paddingLeft: 0 }} placeholder="City" />
-            </Item>
-            <Item underline style={{ borderBottomWidth: 0 }}>
-              <Input style={{ paddingLeft: 0 }} placeholder="State" />
-            </Item>
+            <InputField
+              name="hobby"
+              placeholder="Hobby"
+            />
           </Card>
           <Card style={{ paddingHorizontal: 10 }}>
-            <Item underline>
-              <Input style={{ paddingLeft: 0 }} placeholder="Name" />
-            </Item>
-            <Item underline>
-              <Input style={{ paddingLeft: 0 }} placeholder="Address" />
-            </Item>
-            <Item underline>
-              <Input style={{ paddingLeft: 0 }} placeholder="Mobile No." />
-            </Item>
+            <InputField
+              name="address"
+              placeholder="Address"
+            />
+            <InputField
+              name="phone"
+              placeholder="Phone"
+            />
           </Card>
           <Button
             primary
