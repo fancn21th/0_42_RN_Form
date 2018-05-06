@@ -29,7 +29,7 @@ const InputField = ({ name, placeholder }) => (
   <Field
     name={name}
     placeholder={placeholder}
-    component={renderInput.bind(this)}
+    component={renderInput}
   />
 )
 
