@@ -17,6 +17,9 @@ const renderPicker = ({ input, placeholder, source , meta:{ touched, error, warn
       underline
       success={touched && !hasError}
       error={hasError}
+      style={{
+        flex:1,
+      }}
     >
       <Picker
         {...input}
@@ -29,8 +32,13 @@ const renderPicker = ({ input, placeholder, source , meta:{ touched, error, warn
           marginLeft: 0,
           paddingLeft: 10
         }}
-        itemTextStyle={{ color: '#788ad2' }}
-        style={{ paddingLeft: 0, width: undefined }}
+        itemTextStyle={{
+          color: '#788ad2'
+        }}
+        style={{
+          flex:1,
+          paddingLeft: 0,
+        }}
         selectedValue={value}
         onValueChange={onValueChange}
       >

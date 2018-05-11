@@ -14,10 +14,15 @@ import {
 } from "native-base";
 
 const validate = values => {
-  const error = {};
-  error.name = ''
+  const error = {
+    name: '',
+    country: '',
+  }
   if(!values.name){
     error.name = 'required';
+  }
+  if(!values.country){
+    error.country = 'required';
   }
   return error;
 };
@@ -81,7 +86,7 @@ class SimpleForm extends Component {
               placeholder="Name"
             />
             <PickerField
-              name="hobby"
+              name="country"
               placeholder="Hobby"
               source={countries}
             />
