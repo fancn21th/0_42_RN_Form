@@ -2,9 +2,10 @@ import React from 'react'
 import { Field } from 'redux-form'
 import { Picker, Item, Icon, Text } from 'native-base'
 
-const renderPicker = ({ input, placeholder, meta:{ touched, error, warning } }) => {
+const renderPicker = ({ input, placeholder, source , meta:{ touched, error, warning } }) => {
   const { value, onChange } = input
   let hasError = false
+
   if(touched && error) {
     hasError = true;
   }
@@ -33,22 +34,23 @@ const renderPicker = ({ input, placeholder, meta:{ touched, error, warning } }) 
         selectedValue={value}
         onValueChange={onValueChange}
       >
-        <Picker.Item label="Wallet" value="key0" />
-        <Picker.Item label="ATM Card" value="key1" />
-        <Picker.Item label="Debit Card" value="key2" />
-        <Picker.Item label="Credit Card" value="key3" />
-        <Picker.Item label="Net Banking" value="key4" />
+        {
+          source.map(item => (
+            <Picker.Item key={item.value} label={item.text} value={item.value} />
+          ))
+        }
       </Picker>
       {hasError ? <Text>{error}</Text> : <Text />}
     </Item>
   )
 }
 
-const PickerField = ({ name, placeholder }) => (
+const PickerField = ({ name, placeholder, source }) => (
   <Field
     name={name}
     placeholder={placeholder}
     component={renderPicker}
+    source={source}
   />
 )
 

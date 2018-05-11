@@ -26,7 +26,38 @@ const submit = (values) => {
   console.log(values);
 }
 
+const countries = [
+  {
+    text: 'China',
+    value: 'china',
+  },
+  {
+    text: 'United State Of American',
+    value: 'usa',
+  },
+  {
+    text: 'United Kingdom',
+    value: 'uk',
+  },
+  {
+    text: 'Japan',
+    value: 'japan',
+  },
+]
+
 class SimpleForm extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      selectedValue: '',
+    }
+  }
+
+  onValueChange(value) {
+    this.setState({
+      selectedValue: value,
+    })
+  }
 
   render() {
     const { handleSubmit, pristine, reset } = this.props;
@@ -38,9 +69,12 @@ class SimpleForm extends Component {
           padder
           contentContainerStyle={{ paddingBottom: 10 }}
         >
+          {/* Redux Form Fields */}
+
           <Text style={{ fontSize: 12, color: "#555", fontWeight: "500" }}>
             Redux Form Fields{" "}
           </Text>
+
           <Card style={{ paddingHorizontal: 10 }}>
             <InputField
               name="name"
@@ -49,11 +83,16 @@ class SimpleForm extends Component {
             <PickerField
               name="hobby"
               placeholder="Hobby"
+              source={countries}
             />
           </Card>
+
+          {/* Common Native Base Components */}
+
           <Text style={{ fontSize: 12, color: "#555", fontWeight: "500" }}>
             Common Native Base Components{" "}
           </Text>
+
           <Card style={{ paddingHorizontal: 10 }}>
             <Item underline>
               <Input style={{ paddingLeft: 0 }} placeholder="Pin Code" />
@@ -70,7 +109,7 @@ class SimpleForm extends Component {
               }}
               itemTextStyle={{ color: '#788ad2' }}
               style={{ paddingLeft: 0, width: undefined }}
-              // selectedValue={this.state.selected}
+              selectedValue={this.state.selectedValue}
               onValueChange={this.onValueChange}
             >
               <Picker.Item label="Wallet" value="key0" />
