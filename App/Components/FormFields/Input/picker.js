@@ -3,11 +3,13 @@ import { Field } from 'redux-form'
 import { Picker, Item, Icon, Text } from 'native-base'
 
 const renderPicker = ({ input, placeholder, meta:{ touched, error, warning } }) => {
-  let hasError = false;
-
+  const { value, onChange } = input
+  let hasError = false
   if(touched && error) {
     hasError = true;
   }
+
+  const onValueChange = (selectedValue) => onChange(selectedValue)
 
   return (
     <Item
@@ -28,8 +30,8 @@ const renderPicker = ({ input, placeholder, meta:{ touched, error, warning } }) 
         }}
         itemTextStyle={{ color: '#788ad2' }}
         style={{ paddingLeft: 0, width: undefined }}
-        // selectedValue={this.state.selected}
-        // onValueChange={this.onValueChange.bind(this)}
+        selectedValue={value}
+        onValueChange={onValueChange}
       >
         <Picker.Item label="Wallet" value="key0" />
         <Picker.Item label="ATM Card" value="key1" />

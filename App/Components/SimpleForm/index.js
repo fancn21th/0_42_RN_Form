@@ -39,25 +39,28 @@ class SimpleForm extends Component {
           contentContainerStyle={{ paddingBottom: 10 }}
         >
           <Text style={{ fontSize: 12, color: "#555", fontWeight: "500" }}>
-            ADD NEW ADDRESS{" "}
+            Redux Form Fields{" "}
           </Text>
           <Card style={{ paddingHorizontal: 10 }}>
             <InputField
               name="name"
               placeholder="Name"
             />
-            {/*<PickerField*/}
-              {/*name="hobby"*/}
-              {/*placeholder="Hobby"*/}
-            {/*/>*/}
+            <PickerField
+              name="hobby"
+              placeholder="Hobby"
+            />
           </Card>
+          <Text style={{ fontSize: 12, color: "#555", fontWeight: "500" }}>
+            Common Native Base Components{" "}
+          </Text>
           <Card style={{ paddingHorizontal: 10 }}>
             <Item underline>
               <Input style={{ paddingLeft: 0 }} placeholder="Pin Code" />
             </Item>
             <Picker
               mode="dropdown"
-              placeholder='abc'
+              placeholder='Country'
               iosIcon={<Icon name="ios-arrow-down-outline" />}
               textStyle={{ color: "#5cb85c" }}
               itemStyle={{
@@ -68,7 +71,7 @@ class SimpleForm extends Component {
               itemTextStyle={{ color: '#788ad2' }}
               style={{ paddingLeft: 0, width: undefined }}
               // selectedValue={this.state.selected}
-              // onValueChange={this.onValueChange.bind(this)}
+              onValueChange={this.onValueChange}
             >
               <Picker.Item label="Wallet" value="key0" />
               <Picker.Item label="ATM Card" value="key1" />
