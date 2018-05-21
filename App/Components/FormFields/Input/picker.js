@@ -67,11 +67,15 @@ renderComponent.propTypes = {
   input: PropTypes.shape({}).isRequired,
   meta: PropTypes.shape({}).isRequired,
   otherProps: PropTypes.shape({}).isRequired,
-  onChangeValue: PropTypes.func.isRequired,
+  onChangeValue: PropTypes.func,
   source: PropTypes.arrayOf(PropTypes.shape({
     text: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
   })).isRequired,
+}
+
+renderComponent.defaultProps = {
+  onChangeValue: null,
 }
 
 const PickerField = ({
@@ -101,6 +105,5 @@ PickerField.propTypes = {
 PickerField.defaultProps = {
   onChangeValue: null,
 }
-
 
 export default PickerField
