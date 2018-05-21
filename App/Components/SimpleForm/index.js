@@ -87,7 +87,7 @@ class SimpleForm extends Component {
             />
             <PickerField
               name="country"
-              placeholder="Hobby"
+              placeholder="Country"
               source={countries}
             />
           </Card>
