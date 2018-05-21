@@ -1,6 +1,7 @@
-import React, { Component } from "react";
-import { reduxForm } from 'redux-form';
-import { InputField, PickerField } from '../FormFields/Input'
+import React, { Component } from "react"
+import { reduxForm } from 'redux-form'
+import { connect } from 'react-redux'
+import { InputField, PickerField, CheckboxField } from '../FormFields/Input'
 import {
   Input,
   Picker,
@@ -90,6 +91,10 @@ class SimpleForm extends Component {
               placeholder="Country"
               source={countries}
             />
+            <CheckboxField
+              name="ready"
+              label="I am ready"
+            />
           </Card>
 
           {/* Common Native Base Components */}
@@ -138,7 +143,15 @@ class SimpleForm extends Component {
     );
   }
 }
-export default reduxForm({
+export default connect(state => (
+  {
+    initialValues: {
+      name: 'hello',
+      country: 'usa',
+      ready: false,
+    },
+  }
+), null)(reduxForm({
   form: 'test',
   validate
-})(SimpleForm);
+})(SimpleForm))

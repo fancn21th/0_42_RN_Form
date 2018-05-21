@@ -8,9 +8,9 @@ const renderComponent = ({
                            source,
                            onChangeValue,
                            input,
-                           meta: { touched, error },
+                           meta: { touched, error, initial },
                          }) => {
-  const { value, onChange } = input
+  const { onChange } = input
   let hasError = false
 
   if (touched && error) {
@@ -19,7 +19,7 @@ const renderComponent = ({
 
   const onValueChange = (selectedValue) => {
     onChange(selectedValue)
-    onChangeValue(selectedValue)
+    if(onChangeValue) onChangeValue(selectedValue)
   }
 
   return (
@@ -49,7 +49,7 @@ const renderComponent = ({
           flex: 1,
           paddingLeft: 0,
         }}
-        selectedValue={value}
+        selectedValue={initial}
         onValueChange={onValueChange}
       >
         {
@@ -75,11 +75,11 @@ renderComponent.propTypes = {
 }
 
 const PickerField = ({
-                       name,
-                       source,
-                       onChangeValue,
-                       ...otherProps
-                     }) => (
+  name,
+  source,
+  onChangeValue,
+  ...otherProps
+}) => (
   <Field
     name={name}
     component={renderComponent}
@@ -99,7 +99,7 @@ PickerField.propTypes = {
 }
 
 PickerField.defaultProps = {
-  onChangeValue: () => {},
+  onChangeValue: null,
 }
 
 

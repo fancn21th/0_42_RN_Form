@@ -4,10 +4,10 @@ import { Input, Item, Text } from 'native-base'
 import PropTypes from 'prop-types'
 
 const renderComponent = ({
-                           otherProps,
-                           input,
-                           meta: { touched, error },
-                         }) => {
+  otherProps,
+  input,
+  meta: { touched, error },
+}) => {
   let hasError = false
 
   if (touched && error) {
@@ -26,7 +26,7 @@ const renderComponent = ({
       <Input
         {...input}
         {...otherProps}
-        // style={{ paddingLeft: 0 }}
+
       />
       {hasError && <Text>{error}</Text>}
     </Item>
