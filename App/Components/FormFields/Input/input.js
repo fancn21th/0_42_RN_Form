@@ -1,12 +1,17 @@
-import React from 'react';
-import { Field } from 'redux-form';
-import { Input, Item, Text } from 'native-base';
+import React from 'react'
+import { Field } from 'redux-form'
+import { Input, Item, Text } from 'native-base'
+import PropTypes from 'prop-types'
 
-const renderInput = ({ input, placeholder, meta:{ touched, error, warning } }) => {
-  let hasError = false;
+const renderComponent = ({
+                           otherProps,
+                           input,
+                           meta: { touched, error },
+                         }) => {
+  let hasError = false
 
-  if(touched && error) {
-    hasError = true;
+  if (touched && error) {
+    hasError = true
   }
 
   return (
@@ -14,23 +19,42 @@ const renderInput = ({ input, placeholder, meta:{ touched, error, warning } }) =
       underline
       success={touched && !hasError}
       error={hasError}
+      style={{
+        flex: 1,
+      }}
     >
       <Input
         {...input}
-        style={{ paddingLeft: 0 }}
-        placeholder={placeholder}
+        {...otherProps}
+        // style={{ paddingLeft: 0 }}
       />
-      {hasError ? <Text>{error}</Text> : <Text />}
+      {hasError && <Text>{error}</Text>}
     </Item>
   )
 }
 
-const InputField = ({ name, placeholder }) => (
+renderComponent.propTypes = {
+  input: PropTypes.shape({}).isRequired,
+  otherProps: PropTypes.shape({}).isRequired,
+  meta: PropTypes.shape({}).isRequired,
+}
+
+const InputField = ({ name, validate, ...otherProps }) => (
   <Field
     name={name}
-    placeholder={placeholder}
-    component={renderInput}
+    validate={validate}
+    component={renderComponent}
+    otherProps={otherProps}
   />
 )
+
+InputField.propTypes = {
+  name: PropTypes.string.isRequired,
+  validate: PropTypes.arrayOf(PropTypes.func),
+}
+
+InputField.defaultProps = {
+  validate: undefined,
+}
 
 export default InputField
