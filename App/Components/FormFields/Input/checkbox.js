@@ -56,7 +56,7 @@ class EnhancedCheckBox extends Component {
           {this.state.hasError && <Text>{error}</Text>}
           {!this.state.hasError && (
             <Body>
-            <Text>{label}</Text>
+              <Text>{label}</Text>
             </Body>
           )}
         </Item>
