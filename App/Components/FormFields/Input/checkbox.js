@@ -11,6 +11,7 @@ class EnhancedCheckBox extends Component {
       hasError: false,
       checkValue: initial,
     }
+    this.onValueChange = this.onValueChange.bind(this)
   }
 
   onValueChange() {
@@ -51,7 +52,7 @@ class EnhancedCheckBox extends Component {
             {...input}
             {...otherProps}
             checked={this.state.checkValue}
-            onPress={this.onValueChange.bind(this)}
+            onPress={this.onValueChange}
           />
           {this.state.hasError && <Text>{error}</Text>}
           {!this.state.hasError && (
